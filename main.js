@@ -1,5 +1,3 @@
-alert("Welcome to Quiz Ninja!");
-
 const quiz = [
     { name: "Superman",realName: "Clark Kent" },
     { name: "Wonder Woman",realName: "Diana Prince" },
@@ -8,7 +6,19 @@ const quiz = [
     { name: "Spider-man",realName: "Peter Parker" },
     { name: "Cyclops",realName: "Scott Summers" }
 ];
-
+Array.prototype.shuffle = function () {
+	for (var i=0; i<this.length; i++)
+	{
+		const j = Math.floor(Math.random() * (this.length - 1))
+		var object1 = this[j];
+		var lastObject = this.pop();
+		this.push(object1);
+		this[j] = lastObject;
+	}
+}
+var exampleArray = ["Bruce","John","Wayne"];
+exampleArray.shuffle();
+alert(exampleArray);
 const game = {
 	start(quiz) { // note the lack of the "function" keyword. Why?
 		this.questions = [...quiz]; // What exactly does this line do?
@@ -23,6 +33,7 @@ const game = {
 			return;
 		}
 		var buttons = document.evaluate("//div[@id='response']/button", document, null, XPathResult.ANY_TYPE,null);
+		this.questions.shuffle();
 		this.question = this.questions.pop();
 		var buttonTexts = [this.question.realName,this.questions[1].realName,this.questions[2].realName];
 		
