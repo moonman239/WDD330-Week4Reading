@@ -23,8 +23,18 @@ const game = {
 			return;
 		}
 		var buttons = document.evaluate("//div[@id='response']/button", document, null, XPathResult.ANY_TYPE,null);
-		
 		this.question = this.questions.pop();
+		var buttonTexts = [this.question.realName,this.questions[1].realName,this.questions[2].realName];
+		var nodes = [];
+// https://stackoverflow.com/questions/47017441/how-to-use-array-from-with-a-xpathresult
+let node = buttons.iterateNext();
+while (node) {
+  nodes.push(node);
+  node = buttons.iterateNext();
+}
+		nodes[0].innerText="hi";
+		nodes[1].innerText="there";
+		nodes[2].innerText="kenobi";
 		document.getElementById("question").innerText = "What is " + this.question.name + "'s real name?";
 		
 	},
