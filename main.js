@@ -16,9 +16,7 @@ Array.prototype.shuffle = function () {
 		this[j] = lastObject;
 	}
 }
-var exampleArray = ["Bruce","John","Wayne"];
-exampleArray.shuffle();
-alert(exampleArray);
+
 const game = {
 	start(quiz) { // note the lack of the "function" keyword. Why?
 		this.questions = [...quiz]; // What exactly does this line do?
@@ -36,7 +34,7 @@ const game = {
 		this.questions.shuffle();
 		this.question = this.questions.pop();
 		var buttonTexts = [this.question.realName,this.questions[1].realName,this.questions[2].realName];
-		
+		buttonTexts.shuffle();
 		var nodes = [];
 // https://stackoverflow.com/questions/47017441/how-to-use-array-from-with-a-xpathresult
 let node = buttons.iterateNext();
