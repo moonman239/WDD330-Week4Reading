@@ -22,7 +22,7 @@ const game = {
 			this.gameOver();
 			return;
 		}
-		var buttons = document.evaluate("\\div[@id='response']\button", document, null, XPathResult.ANY_TYPE,null);
+		var buttons = document.evaluate("//div[@id='response']\button", document, null, XPathResult.ANY_TYPE,null);
 		
 		this.question = this.questions.pop();
 		document.getElementById("question").innerText = "What is " + this.question.name + "'s real name?";
