@@ -22,7 +22,6 @@ const game = {
 	start(quiz) { // note the lack of the "function" keyword. Why?
 		this.questions = [...quiz]; // What exactly does this line do?
 		this.answers = this.questions.map(x => x.realName);
-		alert(this.answers);
 		this.score = 0;
 		this.ask();
 	},
