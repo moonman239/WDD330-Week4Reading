@@ -20,6 +20,8 @@ Array.prototype.shuffle = function () {
 const game = {
 	start(quiz) { // note the lack of the "function" keyword. Why?
 		this.questions = [...quiz]; // What exactly does this line do?
+		this.answers = this.questions.map(x => x.realName);
+		alert(this.answers);
 		this.score = 0;
 		this.ask();
 	},
@@ -32,8 +34,9 @@ const game = {
 		}
 		var buttons = document.evaluate("//div[@id='response']/button", document, null, XPathResult.ANY_TYPE,null);
 		this.questions.shuffle();
+		this.answers.shuffle();
 		this.question = this.questions.pop();
-		var buttonTexts = [this.question.realName,this.questions[1].realName,this.questions[2].realName];
+		var buttonTexts = [this.question.realName,this.answers[0],this.answers[1]];
 		buttonTexts.shuffle();
 		var nodes = [];
 // https://stackoverflow.com/questions/47017441/how-to-use-array-from-with-a-xpathresult
