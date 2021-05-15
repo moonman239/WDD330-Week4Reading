@@ -6,6 +6,7 @@ const quiz = [
     { name: "Spider-man",realName: "Peter Parker" },
     { name: "Cyclops",realName: "Scott Summers" }
 ];
+// Shuffle array in-place.
 Array.prototype.shuffle = function () {
 	for (var i=0; i<this.length; i++)
 	{
@@ -34,9 +35,10 @@ const game = {
 		}
 		var buttons = document.evaluate("//div[@id='response']/button", document, null, XPathResult.ANY_TYPE,null);
 		this.questions.shuffle();
-		this.answers.shuffle();
 		this.question = this.questions.pop();
-		var buttonTexts = [this.question.realName,this.answers[0],this.answers[1]];
+		var incorrectAnswers = this.answers.filter(x => x != this.question.realName);
+		incorrectAnswers.shuffle();
+		var buttonTexts = [this.question.realName,incorrectAnswers[0],incorrectAnswers[1]];
 		buttonTexts.shuffle();
 		var nodes = [];
 // https://stackoverflow.com/questions/47017441/how-to-use-array-from-with-a-xpathresult
