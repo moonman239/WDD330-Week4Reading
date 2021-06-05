@@ -1,5 +1,5 @@
 // Use the Fetch API to grab quiz questions from SitePoints's S3 account.\
-const url = "http://spbooks.github.io/questions.json";
+const url = "questions.json";
 const view = document.getElementById("question");
 fetch(url).then(response => {
 	if (response.ok)
