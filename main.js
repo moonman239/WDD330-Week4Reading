@@ -1,11 +1,19 @@
-const quiz = [
-    { name: "Superman",realName: "Clark Kent" },
-    { name: "Wonder Woman",realName: "Diana Prince" },
-    { name: "Batman",realName: "Bruce Wayne" },
-    { name: "The Hulk",realName: "Bruce Banner" },
-    { name: "Spider-man",realName: "Peter Parker" },
-    { name: "Cyclops",realName: "Scott Summers" }
-];
+// Use the Fetch API to grab quiz questions from SitePoints's S3 account.\
+const url = "http://spbooks.github.io/questions.json";
+const view = document.getElementById("question");
+fetch(url).then(response => {
+	if (response.ok)
+	{
+		return response.json();
+	}
+	else
+	{
+		throw new Error("AJAX error " + response.status);
+	}
+}).then(quiz => {
+	game.start(quiz);
+})
+
 // Shuffle array in-place.
 Array.prototype.shuffle = function () {
 	for (var i=0; i<this.length; i++)
